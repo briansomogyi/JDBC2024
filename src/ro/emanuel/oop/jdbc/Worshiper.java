@@ -21,26 +21,26 @@ public class Worshiper {
 		
 		// CREATE
 		String name = "Brian Somogyi";
-		String address = "Str. Thurzo Sandor, nr. 19";
-		String denomination = "baptist";
+		String address = "Str. Galileo Galilei Nr. 3";
+		String domain = "lirics";
 		
-		String sqlInsert = "insert into church (name, address, denomination) values (?, ?, ?)";
+		String sqlInsert = "insert into worshipers (name, address, worship_domain) values (?, ?, ?)";
 		PreparedStatement preparedStatement = connection.prepareStatement(sqlInsert);
 		preparedStatement.setString(1, name);
 		preparedStatement.setString(2, address);
-		preparedStatement.setString(3, denomination);
+		preparedStatement.setString(3, domain);
 		
 		preparedStatement.executeUpdate();
 		
 		// READ
-		ResultSet resultSet = statement.executeQuery("select * from church");
+		ResultSet resultSet = statement.executeQuery("select * from worshipers");
 		while(resultSet.next()) {
 			int id = resultSet.getInt("id");
-			String churchName = resultSet.getString("name");
-			String churchAddress = resultSet.getString("address");
-			String churchDenomination = resultSet.getString("denomination");
+			String worshiperName = resultSet.getString("name");
+			String worshiperAddress = resultSet.getString("address");
+			String worshipDomain = resultSet.getString("worship_domain");
 			
-			System.out.println(id + " " + churchName + " " + churchAddress + " " + churchDenomination);
+			System.out.println(id + " " + worshiperName + " " + worshiperAddress + " " + worshipDomain);
 		}
 		
 		connection.close();
