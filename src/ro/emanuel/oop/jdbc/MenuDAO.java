@@ -23,11 +23,11 @@ public class MenuDAO {
 		ResultSet resultSet = statement.executeQuery(query);
 		while(resultSet.next()) {
 			int id = resultSet.getInt("id");
-			String fel1 = resultSet.getString("fel1");
-			String fel2 = resultSet.getString("fel2");
-			String desert = resultSet.getString("desert");
+			String firstMeal = resultSet.getString("first_meal");
+			String secondMeal = resultSet.getString("second_meal");
+			String dessert = resultSet.getString("dessert");
 			int price = resultSet.getInt("price");
-			Menu menu = new Menu(id, fel1, fel2, desert, price);
+			Menu menu = new Menu(id, firstMeal, secondMeal, dessert, price);
 			menuList.add(menu);
 		}
 		
